@@ -1,1 +1,1 @@
-# mern-goalsetter
+# GoalSetter
