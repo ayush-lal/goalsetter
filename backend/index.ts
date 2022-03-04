@@ -1,8 +1,11 @@
-const express = require("express");
-const colors = require("colors");
-const dotenv = require("dotenv").config();
+import express from "express";
+import dotenv from "dotenv";
 const { errorHandler } = require("./middleware/errorMiddleware");
-const connectDatabase = require("./config/db");
+import { connectDatabase } from "./config/db";
+import { router } from "./routes/goalRoutes";
+
+dotenv.config();
+
 const port = process.env.PORT;
 
 connectDatabase();
@@ -12,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/goals", require("./routes/goalRoutes"));
+app.use("/api/goals", router);
 
 app.use(errorHandler);
 
