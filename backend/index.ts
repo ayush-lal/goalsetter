@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 const { errorHandler } = require("./middleware/errorMiddleware");
 import { connectDatabase } from "./config/db";
 import { router } from "./routes/goalRoutes";
+import { User } from "./routes/userRoutes";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/goals", router);
+app.use("/api/users", User);
 
 app.use(errorHandler);
 
